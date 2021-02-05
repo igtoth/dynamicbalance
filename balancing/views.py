@@ -1,3 +1,6 @@
+# Dynamic Balance
+# Toth, Ighor <toth@ighor.com> - https://github.com/igtoth/dynamicbalance
+
 from balancing.models import Tickers
 from django.shortcuts import render
 from django.template.loader import get_template
