@@ -1,3 +1,3 @@
 readme.txt
 Toth, Ighor <toth@ighor.com>
-Dynamic Balancing tool for controlling dynamic balancing of stock market
+This is a  tool for controlling "dynamic balancing" of stock market
