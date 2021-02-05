@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{{ title }}</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/toth.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-datepicker3.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet">
+
+</head>
+<body id="page-top">
+
+  {% block content %}
+  {% endblock %}
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+  <!-- Jquery UI-->
+  <script src="{% static 'vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+
+  <!-- Page level plugins -->
+  <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{% static 'js/toth/chart-area.js' %}"></script>
+  <script src="{% static 'js/toth/chart-pie.js' %}"></script>
+
+  <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'locales/bootstrap-datepicker.pt-BR.min.js' %}" charset="UTF-8"></script>
+
+  <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
+  <script src="{% static 'vendor/popper/tooltip.js' %}"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/toth.min.js' %}"></script>
+  <script src="{% static 'js/after.min.js' %}"></script>
+
+  <script>
+  $(function() {
+    $("#id_ativo").autocomplete({
+      source: "{% url 'ticker-name-search' %}",
+      minLength: 1,
+      delay: 200,
+    });
+  });
+
+  $('.datepicker').each(function() {
+    var minDate = new Date();
+    minDate.setHours(0);
+    minDate.setMinutes(0);
+    minDate.setSeconds(0,0);
+    
+    var $picker = $(this);
+    $picker.datepicker();
+    
+    var pickerObject = $picker.data('datepicker');
+    
+    $picker.on('changeDate', function(ev){
+        $picker.datepicker('hide');
+    });
+  });
+  </script>
+
+</body>
+</html>

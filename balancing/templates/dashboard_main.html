@@ -1,0 +1,228 @@
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+		<!-- Main Content -->
+		<div id="content">
+			{% include "dashboard_navbar.html" %}
+
+			<!-- Begin Page Content -->
+			<div class="container-fluid">
+				<form method="POST" action="">
+					{{ form.management_form }}
+					{% csrf_token %}
+					{{ form.non_field_errors }}
+					{{ form.source.errors }}
+					{{ form.source }}
+					<!-- Page Heading -->
+					<div class="d-sm-flex align-items-center justify-content-between mb-4">
+					<h1 class="h3 mb-0 text-gray-800">Balanceamento dinâmico</h1>
+					<!-- <input type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" value="Gerar Relatório"> -->
+					<!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-sync-alt fa-sm text-white-50"></i> Gerar Relatório</a> -->
+						Versão 1.0
+					</div>
+					<!-- END Page Heading -->
+					
+					<!-- Content Row -->
+					<div class="row">
+					</div>
+					<!-- END Content Row -->
+					
+					<!-- Content Row -->
+					<div class="row float-sm-left">
+						<!-- Area Chart -->
+						<div class="col-xl-4 col-lg-5">
+							<div class="card shadow mb-4">
+							<!-- Card Header - Dropdown -->
+								<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+									<h6 class="m-0 font-weight-bold text-primary">Dados do usuário</h6>
+									<div class="dropdown no-arrow">
+										<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+										</a>
+										<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+											<div class="dropdown-header">Menu:</div>
+											<a class="dropdown-item" href="#">Resetar valores</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="#">Ajuda</a>
+										</div>
+									</div>
+								</div>
+								<!-- Card Body -->
+								<div class="card-body h-100">
+									<div class="row ">
+										<div class="col">
+											<!-- <h6 class="card-subtitle mb-2 text-muted">Ativo</h6> -->
+											<!-- <canvas id="myAreaChart"></canvas> -->
+											<div class="row  p-1 rounded no-gutters align-items-center" >
+												<div class="col">
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ form.ativo.label }}</div>
+													<div class="h5 mb-0 font-weight-bold text-gray-800">{{ form.ativo }}</div>
+												</div>
+												<div class="col">
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ form.pat_ini.label }}</div>
+													<div class="h5 mb-0 font-weight-bold text-gray-800">{{ form.pat_ini }}</div>
+												</div>
+											</div>
+											<div class="row  p-1 rounded no-gutters align-items-center"> <!-- style="background-color: #e6e6e6"> -->
+												<div class="col">
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ form.periodo_ini.label }}</div>
+													<div class="h5 mb-0 font-weight-bold text-gray-800">{{ form.periodo_ini }}</div>
+												</div>
+												<div class="col">
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ form.periodo_fim.label }}</div>
+													<div class="h5 mb-0 font-weight-bold text-gray-800">{{ form.periodo_fim }}</div>
+												</div>
+											</div>
+											<div class="row  p-1 rounded no-gutters align-items-center"> <!-- style="background-color: #e6e6e6" -->
+												<div class="col">
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ form.prop_r_fix.label }}</div>
+													<div class="h5 mb-0 font-weight-bold text-gray-800">{{ form.prop_r_fix }}</div>
+												</div>
+												<div class="col">
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ form.prop_r_var.label }}</div>
+													<div class="h5 mb-0 font-weight-bold text-gray-800">{{ form.prop_r_var }}</div>
+												</div>
+											</div>
+											<div class="row  p-1 rounded no-gutters align-items-center"> <!--  style="background-color: #e6e6e6"> -->
+												<div class="col">
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ form.param_h.label }}</div>
+													<div class="h5 mb-0 font-weight-bold text-gray-800">{{ form.param_h }}</div>
+												</div>
+												<div class="col">
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{ form.param_alfa.label }}</div>
+													<div class="h5 mb-0 font-weight-bold text-gray-800">{{ form.param_alfa }}</div>
+												</div>
+											</div>
+											<div class="row  p-1 rounded no-gutters align-items-center"> <!-- style="background-color: #e6e6e6" -->
+												<div class="col w-100 float-left">
+													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">&nbsp;</div>
+													<div class="d-flex justify-content-end">
+														<button type="submit" id="completed-task" class="fabuttoni sm-inline-block btn btn-sm btn-primary shadow-sm">
+															<i class="fas fa-sync-alt fa-sm text-white-50"></i> Gerar Relatório
+														</button>
+														<!-- <input type="submit" class="  sm-inline-block btn btn-sm btn-primary shadow-sm" value="Gerar Relatório"> -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>	
+								</div>
+							</div>
+						</div>
+				
+			
+
+						<!-- Chart -->
+						<div class="col-xl-8 col-lg-7">
+							<div class="card shadow mb-4 ">
+								<!-- Card Header - Dropdown -->
+								<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+									<h6 class="m-0 font-weight-bold text-primary">Gráfico de Patrimônio</h6>
+									<div class="dropdown no-arrow">
+										<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+										</a>
+									<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+										<div class="dropdown-header">Menu:</div>
+										<a class="dropdown-item" href="#">Action</a>
+										<a class="dropdown-item" href="#">Another action</a>
+										<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="#">Something else here</a>
+										</div>
+									</div>
+								</div>
+								<!-- Card Body -->
+								<div class="card-body h-100">
+									<div class="m-0 p-0">
+										<!-- <canvas id="myPieChart"></canvas> -->
+										<!-- <canvas id="myAreaChart" style="display: block; width: 406px; height: 320px;" width="406" height="320" class="chartjs-render-monitor"></canvas> -->
+										<!--
+										<img src="plot/?ativo={{ form.ativo.value }}&periodo_ini={{ form.periodo_ini.value }}&periodo_fim={{ form.periodo_fim.value}}&prop_r_var={{ form.prop_r_var.value }}&prop_r_fix={{ form.prop_r_fix.value }}&param_h={{ form.param_h.value }}&param_alfa={{ form.param_alfa.value }}&pat_ini={{ form.pat_ini.value }}&y[]=10&y[]=8&y[]=6&y[]=4" class="img-fluid card-img h-100 m-0 p-0">
+										-->
+										<img width="100%" src="data:image/png;base64,{{ image }}"> 
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END Content Row -->
+					<!-- Content Row -->
+					<div class="row">
+						{% for key,val in statistics.items %}
+						<!-- {{ key }} Card  -->
+						<div class="col-xl-3 col-md-6 mb-4">
+						  <div class="card border-left-primary shadow h-100 py-2">
+							<div class="card-body">
+							  <div class="row no-gutters align-items-center">
+								<div class="col mr-2">
+									<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+										{% if key == "total_result" %}
+                                                                                        Rendimento sem Balanceamento
+                                                                                {% endif %}
+                                                                                {% if key == "total_bal_result" %}
+                                                                                        Rendimento com Balanceamento
+                                                                                {% endif %}
+                                                                                {% if key == "stock_earnings" %}
+                                                                                        Rendimento ATIVO
+                                                                                {% endif %}
+                                                                                {% if key == "lft_earnings" %}
+                                                                                        Rendimento LFT
+                                                                                {% endif %}
+                                                                                {% if key == "num_trades" %}
+                                                                                        Trades
+                                                                                {% endif %}
+                                                                                {% if key == "num_trades_anual" %}
+                                                                                        Trades Anual
+                                                                                {% endif %}
+                                                                                {% if key == "max_bal_result" %}
+                                                                                        Result. Max. (Bal)
+                                                                                {% endif %}
+                                                                                {% if key == "min_bal_result" %}
+                                                                                        Result. Min. (Bal)
+                                                                                {% endif %}
+
+
+									</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">
+									{% if key == "total_result" or key == "total_bal_result" or key == "stock_earnings" or key == "lft_earnings" %} 
+										{{ val }} %
+									{% endif %}
+									{% if key == "num_trades" or key == "num_trades_anual" %}
+										{{ val }}
+									{% endif %}
+									{% if key == "max_bal_result" or key == "min_bal_result" %}
+										R$ {{ val }}
+									{% endif %}
+									</div>
+								</div>
+	
+								<div class="col-auto">
+									{% if key == "total_result" or key == "total_bal_result" or key == "stock_earnings" or key == "lft_earnings" %}
+                                                                                <i class="fas fa-percentage fa-2x text-gray-300"></i>
+									{% endif %}
+									{% if key == "num_trades" or key == "num_trades_anual" %}
+										<i class="fas fa-handshake fa-2x text-gray-300"></i>
+                                                                        {% endif %}
+									{% if key == "max_bal_result" or key == "min_bal_result" %}
+                                                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                                        {% endif %}
+								</div>
+
+							  </div>
+							</div>
+						  </div>
+						</div>
+						<!-- END {{ key }} Card  -->
+						{% endfor %}
+					</div>
+					<!-- END Content Row -->
+				</form>
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+      <!-- End of Main Content -->
+    {% include "dashboard_footer.html" %}
+    </div>
+    <!-- End of Content Wrapper -->
+
